@@ -3,6 +3,7 @@
 ✨ A simple and interactive Ramadan Tracker Web Application built using React.js, Redux Toolkit, and Tailwind CSS to help users track their daily fasting, prayers, and Quran reading progress during Ramadan.
 
 
+
 📌 Features
 
 ✅ Add daily Ramadan entries (Day 1–30)
@@ -24,6 +25,7 @@
 🎉 Success message on submission
 
 
+
 🛠️ Tech Stack
 
 ⚛️ React.js
@@ -35,6 +37,7 @@
 🎨 Tailwind CSS
 
 🖥️ Visual Studio Code
+
 
 
 🚀 How It Works
@@ -60,6 +63,7 @@ Calculates total prayers (out of 6)
 Tracks remaining Quran pages (from 604)
 
 Displays progress in styled cards
+
 
 
 🔒 Validations Included
