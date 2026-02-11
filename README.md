@@ -1,16 +1,47 @@
-# React + Vite
+🌙 Ramadan Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ A simple and interactive Ramadan Tracker Web Application built using React.js, Redux Toolkit, and Tailwind CSS to help users track their daily fasting, prayers, and Quran reading progress during Ramadan.
 
-Currently, two official plugins are available:
+📌 Features
+✅ Add daily Ramadan entries (Day 1–30)
+🌙 Track fasting status (Yes / No with reason)
+🕌 Track all 5 daily prayers + Taraweeh
+📖 Record Quran pages read (out of 604 pages)
+📊 Automatically calculate total prayers completed
+✏️ Edit existing entries
+🗑️ Delete entries with confirmation
+✔️ Form validation for accurate data entry
+🎉 Success message on submission
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛠️ Tech Stack
+⚛️ React.js
+🧠 Redux Toolkit
+💾 Redux Persist (if enabled in project)
+🎨 Tailwind CSS
+🖥️ Visual Studio Code
 
-## React Compiler
+🚀 How It Works
+Enter the Day number (1–30)
+Select whether you fasted
+If not fasted, provide a valid reason
+Select completed prayers
+Enter Quran pages read
+Submit the form
+View, Edit, or Delete entries
+The app dynamically:
+Calculates total prayers (out of 6)
+Tracks remaining Quran pages (from 604)
+Displays progress in styled cards
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🔒 Validations Included
+Day must be between 1–30
+Fasting selection is required
+Reason is required if not fasting
+Quran pages must be between 0–604
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+💡 Future Improvements
+Add total Ramadan progress dashboard
+Add percentage completion tracking
+Add dark/light theme toggle
+Store data in backend (Node/Django + Database)
+Add authentication system
