@@ -32,7 +32,7 @@
 
 🧠 Redux Toolkit
 
-💾 Redux Persist (if enabled in project)
+💾 Redux Persist
 
 🎨 Tailwind CSS
 
