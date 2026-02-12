@@ -60,7 +60,7 @@ function RamadanTracker() {
         }
         if (formm.fasted == false) {
             if (formm.reason == null || formm.reason.trim() === '') {
-                alert('Please provide the reason!; cannot contain empty spaces!')
+                alert('Please provide the reason! (cannot contain empty spaces) ')
                 return
             }
         }
@@ -74,7 +74,7 @@ function RamadanTracker() {
         }
         else {
             dispatch(edit({
-                index: editIndex,
+                day: editIndex,
                 updatedData: { ...formm, prayerCount }
             }))
             SetEditIndex(null)
@@ -107,8 +107,7 @@ function RamadanTracker() {
                             <label htmlFor="">Day: </label>
                             <input value={formm.day ?? ''} className=' pl-2  text-black rounded-md ml-64' onChange={(d) => setFormm({ ...formm, day: Number(d.target.value) })} type="number" />
                             {formm.day <= 0 && formm.day !== null && <span className='text-red-700'>Please enter a valid day!</span>}
-                            {/* {dayError && <p className='text-red-700'>{dayError}</p>} */}
-                            {/* {formm.day <= 0 && <p className='text-red-700'>Please enter a valid day!</p>} */}
+                           
                             <br />
                         </div>
 
@@ -124,7 +123,7 @@ function RamadanTracker() {
                                 <div>
                                     <label htmlFor=""></label> Reason?
                                     <input value={formm.reason} onChange={(r) => setFormm({ ...formm, reason: r.target.value })} className=' pl-2 mt-4 ml-56 text-black rounded-md' type="text" />
-                                    {/* {formm.reason !== null && formm.reason.trim() === '' && <p className='text-red-700'>Please enter a valid reason!</p>} */}
+                    
 
                                 </div>)}
                             <br />
@@ -156,40 +155,44 @@ function RamadanTracker() {
             </div>
             {readRamadan.length > 0 &&
                 <div className=' mt-6 grid grid-cols-3 gap-6 justify-items-center'>
-                    {readRamadan.map((i, index) => {
-                        remainingQuran = remainingQuran - (i.quran)
-                        return (
-                            <div key={index} >
-                                <div className='bg-yellow-700 not-italic shadow-xl shadow-black rounded-3xl m-5 text-amber-100 w-60 p-4 h-80 flex flex-col'>
-                                    <div className='flex-1'>
-                                        <h1 className='font-bold text-center text-2xl pb-4 text-slate-900'>🌙 DAY: {i.day} </h1>
-                                        {/* <br /> */}
-                                        Fast: {i.fasted ? <span>✅</span> : <span>❌ <br /> Reason : {i.reason}</span>}
-                                        {/* Fast: {i.fasted ? '✅' : ` ❌ Reason: ${ i.reason}`} */}
+                    {/* {readRamadan.map((i, index) => { */}
+                    {[...readRamadan]
+                        .sort((a, b) => a.day - b.day)
+                        .map((i, index) => {
+
+                            remainingQuran = remainingQuran - (i.quran)
+                            return (
+                                <div key={index} >
+                                    <div className='bg-yellow-700 not-italic shadow-xl shadow-black rounded-3xl m-5 text-amber-100 w-60 p-4 h-80 flex flex-col'>
+                                        <div className='flex-1'>
+                                            <h1 className='font-bold text-center text-2xl pb-4 text-slate-900'>🌙 DAY: {i.day} </h1>
+                                            {/* <br /> */}
+                                            Fast: {i.fasted ? <span>✅</span> : <span>❌ <br /> Reason : {i.reason}</span>}
+                                           
+                                            <br />
+                                            Prayers:  {i.prayerCount === 6 && '⭐️'}{i.prayerCount}/6
+                                            <br />
+                                            Quran pages read : {i.quran}
+                                            <br />
+                                            Quran left: {remainingQuran}/604
+                                        </div>
                                         <br />
-                                        Prayers:  {i.prayerCount === 6 && '⭐️'}{i.prayerCount}/6
-                                        <br />
-                                        Quran pages read : {i.quran}
-                                        <br />
-                                        Quran left: {remainingQuran}/604
-                                    </div>
-                                    <br />
-                                    <div className='flex justify-center gap-2 mt-auto'>
-                                        <button onClick={() => {
-                                            setFormm(i)
-                                            SetEditIndex(index)
-                                        }}
-                                            className='bg-yellow-600 font-medium font-sans text-blue-900 rounded-md p-1 hover:bg-yellow-500  py-2 px-2'>EDIT</button>
-                                        <button onClick={() => {
-                                            const deleteConfirmation = window.confirm("Are you sure?")
-                                            deleteConfirmation ? dispatch(del(index)) : ''
-                                        }}
-                                            className='bg-red-800  font-sans text-white rounded-md p-1 hover:bg-red-600 px-2 py-2 '>DELETE</button>
+                                        <div className='flex justify-center gap-2 mt-auto'>
+                                            <button onClick={() => {
+                                                setFormm(i)
+                                                SetEditIndex(i.day)
+                                            }}
+                                                className='bg-yellow-600 font-medium font-sans text-blue-900 rounded-md p-1 hover:bg-yellow-500  py-2 px-2'>EDIT</button>
+                                            <button onClick={() => {
+                                                const deleteConfirmation = window.confirm("Are you sure?")
+                                                deleteConfirmation ? dispatch(del(i.day)) : ''
+                                            }}
+                                                className='bg-red-800  font-sans text-white rounded-md p-1 hover:bg-red-600 px-2 py-2 '>DELETE</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}</div>
+                            )
+                        })}</div>
             }
 
             {/* </div> */}
