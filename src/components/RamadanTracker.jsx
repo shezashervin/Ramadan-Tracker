@@ -90,7 +90,7 @@ function RamadanTracker() {
         <div className='bg-blue-950 min-h-screen leading-loose font-serif text-center italic text-amber-100 '>
 
 
-            <div className=' pt-3 font-serif bg-gradient-to-r from-yellow-800 via-amber-100 to-blue-900'>
+            <div className=' pt-3 font-[Amiri] bg-gradient-to-r from-yellow-800 via-amber-100 to-blue-900 ' dir='rtl'>
 
                 <h1 className='text-blue-900 text-3xl p-3'> ﷽ </h1>
                 <h1 className='text-xl p-3 text-yellow-700'> رَمَضَان المُبَارَك</h1>
