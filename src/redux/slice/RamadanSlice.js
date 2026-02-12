@@ -11,11 +11,18 @@ export const RamadanSlice = createSlice({
             // console.log(state.details);
         },
         edit: (state, action) => {
-            const { index, updatedData } = action.payload
-            state.details[index] = updatedData
+            const { day, updatedData } = action.payload
+            const index = state.details.findIndex(
+                item => item.day === day
+            )
+            if (index !== -1) {
+                state.details[index] = updatedData
+            }
         },
         del: (state, action) => {
-            state.details.splice(action.payload, 1)
+            state.details = state.details.filter(
+                item => item.day !== action.payload
+            )
         }
     }
 })
